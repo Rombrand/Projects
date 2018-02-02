@@ -5,7 +5,8 @@
 #/CarND-Alexnet-Feature-Extraction
 #/CarND-Term1-Starter-Kit-Test
 #/CarND-Term1-Starter-Kit
-#/**/data*
+/**/data*
+!/**/data_real_training_2
 #.**/data_sample/
 /CarND*
-*.jpg
+#*.jpg
