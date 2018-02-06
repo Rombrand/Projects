@@ -5,8 +5,8 @@ import cv2
 import numpy as np
 
 
-PATH = 'data_real_training/'
-PATH = 'data/'
+PATH = 'data_real_training_2/'
+#PATH = 'data/'
 
 correction = 0.3
 #
