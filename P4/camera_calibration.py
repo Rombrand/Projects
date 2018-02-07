@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import pickle
 import glob
+from params import *
 
 #image = cv2.imread('test_images/warp_img_with_lines.jpg') #straight_lines1  test5
 #test_image = cv2.imread('test_images/test5.jpg') #straight_lines1  test5
-#image = cv2.imread('test_images/warp_curved_lines.png') #straight_lines1  test5
-
+#test_image = cv2.imread('test_images/straight_lines1.jpg') #straight_lines1  test5
 
 
 
@@ -16,6 +16,7 @@ import glob
 
 
 """
+
 # LONG
 # Define Source and Destination points
 x1_offset = 150
@@ -39,7 +40,7 @@ P4_dst = (P3_dst[0], size_y)
 # SHORT
 # Define Source and Destination points
 x1_offset = 180
-x2_offset = 590-2     #570
+x2_offset = 588
 x3_offset = (x2_offset - x1_offset)/3
 y1_offset = 30
 y2_offset = size_y-270   # 250
@@ -58,22 +59,14 @@ src = np.float32([P1_src, P2_src, P3_src, P4_src])
 dst = np.float32([P1_dst, P2_dst, P3_dst, P4_dst])
 """
 
-# Draw source and destination lines in images
-"""
-vertices_src = np.array([[P1_src, P2_src, P3_src, P4_src]], dtype=np.int32)
-vertices_dst = np.array([[P1_dst, P2_dst, P3_dst, P4_dst]], dtype=np.int32)
-img_src = np.copy(test_image)
-img_dst = np.copy(test_image)
-cv2.polylines(img_src, vertices_src, False, (0,255,0), 1)
-cv2.polylines(img_dst, vertices_dst, False, (0,255,0), 3)
-"""
+
 
 
 
 
 
 #-------------------------- CALIBRATION ------------------------
-def calibration_params(nx, ny, img_size):
+def calibration_params():
 
     obj_points = []  # Real world points
     img_points = []  # Image points
@@ -133,20 +126,16 @@ def undistort(image, mtx, dist):
 
 
 #----------------------------- WARP --------------------------
-def warp(undist, src, dst, img_size):
+def warp(undist, src, dst):
 
         # get M, the transform matrix
         M = cv2.getPerspectiveTransform(src, dst)
         # warp the image to a top-down view
         warped = cv2.warpPerspective(undist, M, img_size, flags=cv2.INTER_LINEAR)
-        #vertices_src = np.array([[P1_src, P2_src, P3_src, P4_src]], dtype=np.int32)
-        #cv2.polylines(warped, src, False, (0, 255, 0), 2)
+        #cv2.polylines(warped, vertices_src, False, (0, 255, 0), 2)
         return warped
 
 
-#----------------------------------------------------------------------
-#---------------------------- PIPELINE --------------------------------
-#----------------------------------------------------------------------
 """
 
 

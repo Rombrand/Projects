@@ -1,9 +1,15 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+import collections
+from params import * #Left, Right
+from camera_calibration import warp
 
 # detect lines
 def find_first_frame(binary_warped):
+
+    global ploty, left_fitx, right_fitx
+
     print(binary_warped.shape)
     print(binary_warped.dtype)
 
@@ -74,37 +80,41 @@ def find_first_frame(binary_warped):
     right_lane_inds = np.concatenate(right_lane_inds)
 
     # Extract left and right line pixel positions
-    leftx = nonzerox[left_lane_inds]
-    lefty = nonzeroy[left_lane_inds]
-    rightx = nonzerox[right_lane_inds]
-    righty = nonzeroy[right_lane_inds]
+    Left.allx = nonzerox[left_lane_inds]
+    Left.ally = nonzeroy[left_lane_inds]
+    Right.allx = nonzerox[right_lane_inds]
+    Right.ally = nonzeroy[right_lane_inds]
 
     # Fit a second order polynomial to each set of points
-    # Calculate the a, b and c parameters
-    left_fit = np.polyfit(lefty, leftx, 2)      # x and y are switched
-    right_fit = np.polyfit(righty, rightx, 2)
+    # Calculate polynomial coefficients  a, b and c
+    Left.current_fit = np.polyfit(Left.ally, Left.allx, 2)      # x and y are switched
+    Right.current_fit = np.polyfit(Right.ally, Right.allx, 2)
 
     #----------- Plot lane lines ------------------
+
     # Generate x and y values for plotting
+    # Y-Values
     ploty = np.linspace(0, binary_warped.shape[0]-1, binary_warped.shape[0] )
-    # # Parabola x = a*(y**2) +b*y +c
-    left_fitx = left_fit[0]*ploty**2 + left_fit[1]*ploty + left_fit[2]
-    right_fitx = right_fit[0]*ploty**2 + right_fit[1]*ploty + right_fit[2]
+    # Fit a second order polynomial to pixel positions for each lane line: x = ay^2 +by +c
+    # X-Values
+    left_fitx = Left.current_fit[0]*ploty**2 + Left.current_fit[1]*ploty + Left.current_fit[2]
+    right_fitx = Right.current_fit[0]*ploty**2 + Right.current_fit[1]*ploty + Right.current_fit[2]
 
-    out_img[nonzeroy[left_lane_inds], nonzerox[left_lane_inds]] = [255, 0, 0]
-    out_img[nonzeroy[right_lane_inds], nonzerox[right_lane_inds]] = [0, 0, 255]
-    plt.imshow(out_img)
-    plt.plot(left_fitx, ploty, color='yellow')
-    plt.plot(right_fitx, ploty, color='yellow')
-    plt.xlim(0, 1280)
-    plt.ylim(720, 0)
+    print("\nLine Distance: {} m \n".format(right_fitx[0] - left_fitx[0]))
 
-    return left_fit, right_fit
+    if show == True:
+        out_img[nonzeroy[left_lane_inds], nonzerox[left_lane_inds]] = [255, 0, 0]
+        out_img[nonzeroy[right_lane_inds], nonzerox[right_lane_inds]] = [0, 0, 255]
+        plt.imshow(out_img)
+        plt.plot(left_fitx, ploty, color='yellow')
+        plt.plot(right_fitx, ploty, color='yellow')
+        plt.xlim(0, 1280)
+        plt.ylim(720, 0)
+        plt.show()
 
 
-
-
-def find_lines(binary_warped, left_fit, right_fit):
+def find_lines(binary_warped):
+    global ploty, left_fitx, right_fitx
 
     # Identify the x and y positions of all nonzero pixels in the image
     nonzero = binary_warped.nonzero()
@@ -112,26 +122,29 @@ def find_lines(binary_warped, left_fit, right_fit):
     nonzerox = np.array(nonzero[1])
     margin = 100
 
-    left_lane_inds = ((nonzerox > (left_fit[0] * (nonzeroy ** 2) + left_fit[1] * nonzeroy + left_fit[2] - margin)) &
-                      (nonzerox < (left_fit[0] * (nonzeroy ** 2) + left_fit[1] * nonzeroy + left_fit[2] + margin)))
+    left_lane_inds = ((nonzerox > (Left.current_fit[0] * (nonzeroy ** 2) + Left.current_fit[1] * nonzeroy + Left.current_fit[2] - margin)) &
+                      (nonzerox < (Left.current_fit[0] * (nonzeroy ** 2) + Left.current_fit[1] * nonzeroy + Left.current_fit[2] + margin)))
 
-    right_lane_inds = ((nonzerox > (right_fit[0] * (nonzeroy ** 2) + right_fit[1] * nonzeroy + right_fit[2] - margin)) &
-                       (nonzerox < (right_fit[0] * (nonzeroy ** 2) + right_fit[1] * nonzeroy + right_fit[2] + margin)))
+    right_lane_inds = ((nonzerox > (Right.current_fit[0] * (nonzeroy ** 2) + Right.current_fit[1] * nonzeroy + Right.current_fit[2] - margin)) &
+                       (nonzerox < (Right.current_fit[0] * (nonzeroy ** 2) + Right.current_fit[1] * nonzeroy + Right.current_fit[2] + margin)))
 
     # Again, extract left and right line pixel positions
-    leftx = nonzerox[left_lane_inds]
-    lefty = nonzeroy[left_lane_inds]
-    rightx = nonzerox[right_lane_inds]
-    righty = nonzeroy[right_lane_inds]
+    Left.allx = nonzerox[left_lane_inds]
+    Left.ally = nonzeroy[left_lane_inds]
+    Right.allx = nonzerox[right_lane_inds]
+    Right.ally = nonzeroy[right_lane_inds]
 
     # Fit a second order polynomial to each
-    left_fit = np.polyfit(lefty, leftx, 2)
-    right_fit = np.polyfit(righty, rightx, 2)
+    Left.current_fit = np.polyfit(Left.ally, Left.allx, 2)
+    Right.current_fit = np.polyfit(Right.ally, Right.allx, 2)
     # Generate x and y values for plotting
-    # Parabola x = a*(y**2) +b*y +c
+    # Fit a second order polynomial to pixel positions for each lane line: x = ay^2 +by +c
     ploty = np.linspace(0, binary_warped.shape[0] - 1, binary_warped.shape[0])
-    left_fitx = left_fit[0] * ploty ** 2 + left_fit[1] * ploty + left_fit[2]
-    right_fitx = right_fit[0] * ploty ** 2 + right_fit[1] * ploty + right_fit[2]
+
+    # print ("Ploty", ploty)
+
+    left_fitx = Left.current_fit[0] * ploty ** 2 + Left.current_fit[1] * ploty + Left.current_fit[2]
+    right_fitx = Right.current_fit[0] * ploty ** 2 + Right.current_fit[1] * ploty + Right.current_fit[2]
 
 
     #----------- Plot lane lines ------------------
@@ -152,12 +165,82 @@ def find_lines(binary_warped, left_fit, right_fit):
     right_line_window2 = np.array([np.flipud(np.transpose(np.vstack([right_fitx + margin, ploty])))])
     right_line_pts = np.hstack((right_line_window1, right_line_window2))
 
+    print("\nLine Distance: {} m \n" .format(right_line_pts[0]-left_line_pts[0]))
+    if show == True:
+        # Draw the lane onto the warped blank image
+        cv2.fillPoly(window_img, np.int_([left_line_pts]), (0, 255, 0))
+        cv2.fillPoly(window_img, np.int_([right_line_pts]), (0, 255, 0))
+        result = cv2.addWeighted(out_img, 1, window_img, 0.3, 0)
+        plt.imshow(result)
+        plt.show()
+        plt.plot(left_fitx, ploty, color='yellow')
+        plt.plot(right_fitx, ploty, color='yellow')
+        plt.xlim(0, 1280)
+        plt.ylim(720, 0)
+
+
+
+
+def get_dist_radius():
+    # Define y-value where we want radius of curvature
+    # I'll choose the maximum y-value, corresponding to the bottom of the image
+    y_eval = np.max(ploty)
+    # x= mx/my^2 * ay^2 + mx/my * by+c
+
+    # Define conversions in x and y from pixels space to meters
+    ym_per_pix = 30 / 720  # meters per pixel in y dimension
+    xm_per_pix = 3.7 / 600 #700  # meters per pixel in x dimension
+    # Fit new polynomials to x,y in world space
+    Left.allx = Left.allx [::-1]  # Reverse to match top-to-bottom in y
+    Right.allx = Right.allx[::-1]  # Reverse to match top-to-bottom in y
+    left_fit_cr = np.polyfit(Left.ally * ym_per_pix, Left.allx * xm_per_pix, 2)
+    #left_fit_cr = np.polyfit(ploty * ym_per_pix, Left.allx * xm_per_pix, 2)
+
+    right_fit_cr = np.polyfit(Right.ally * ym_per_pix, Right.allx * xm_per_pix, 2)
+    #right_fit_cr = np.polyfit(ploty * ym_per_pix, Right.allx * xm_per_pix, 2)
+    # Calculate the new radii of curvature
+    Left.radius_of_curvature = ((1 + (2 * left_fit_cr[0] * y_eval * ym_per_pix + left_fit_cr[1]) ** 2) ** 1.5) \
+                               / np.absolute(2 * left_fit_cr[0])
+    Right.radius_of_curvature = ((1 + (2 * right_fit_cr[0] * y_eval * ym_per_pix + right_fit_cr[1]) ** 2) ** 1.5) \
+                                / np.absolute(2 * right_fit_cr[0])
+
+    # Now our radius of curvature is in meters
+    print(Left.radius_of_curvature, 'm', Right.radius_of_curvature, 'm')
+    # Example values: 632.1 m    626.2 m
+
+
+def draw_lines(warped, undist):
+    # Create an image to draw the lines on
+    warp_zero = np.zeros_like(warped).astype(np.uint8)
+    color_warp = np.dstack((warp_zero, warp_zero, warp_zero))
+
+    # Recast the x and y points into usable format for cv2.fillPoly()
+    pts_left = np.array([np.transpose(np.vstack([left_fitx, ploty]))])
+    pts_right = np.array([np.flipud(np.transpose(np.vstack([right_fitx, ploty])))])
+    pts = np.hstack((pts_left, pts_right))
+
     # Draw the lane onto the warped blank image
-    cv2.fillPoly(window_img, np.int_([left_line_pts]), (0, 255, 0))
-    cv2.fillPoly(window_img, np.int_([right_line_pts]), (0, 255, 0))
-    result = cv2.addWeighted(out_img, 1, window_img, 0.3, 0)
-    plt.imshow(result)
-    plt.plot(left_fitx, ploty, color='yellow')
-    plt.plot(right_fitx, ploty, color='yellow')
-    plt.xlim(0, 1280)
-    plt.ylim(720, 0)
+    cv2.fillPoly(color_warp, np.int_([pts]), (0, 255, 0))
+
+    # Warp the blank back to original image space using inverse perspective matrix (Minv)
+#    newwarp = cv2.warpPerspective(color_warp, Minv, (size_y, size_x))
+    newwarp = warp(color_warp, dst, src)
+    print("SHAPES: ", undist.shape, newwarp.shape)
+    # Combine the result with the original image
+
+    result = cv2.addWeighted(undist, 1, newwarp, 0.3, 0)
+
+    # Print distance from center on video
+    if position > 640:
+        cv2.putText(result, 'Vehicle is {:.2f}m left of center'.format(distance_from_center), (100, 80),
+                    fontFace=16, fontScale=2, color=(255, 255, 255), thickness=2)
+    else:
+        cv2.putText(result, 'Vehicle is {:.2f}m right of center'.format(distance_from_center), (100, 80),
+                    fontFace=16, fontScale=2, color=(255, 255, 255), thickness=2)
+    # Print radius of curvature on video
+    cv2.putText(result, 'Radius of Curvature {}(m)'.format(int((Left.radius + Right.radius) / 2)), (120, 140),
+                fontFace=16, fontScale=2, color=(255, 255, 255), thickness=2)
+    Left.count += 1
+    
+
+    return result

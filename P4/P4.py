@@ -5,8 +5,8 @@ import matplotlib.image as mpimg
 import pickle
 from line_detection import colour_extraction, gradient_extraction
 from camera_calibration import undistort, warp, calibration_params
-from sliding_window import find_first_frame, find_lines
-from Line_class import Line
+from sliding_window import find_first_frame, find_lines, get_dist_radius, draw_lines
+from params import *
 
 
 #----------------------------------------------------------------------
@@ -14,33 +14,20 @@ from Line_class import Line
 #----------------------------------------------------------------------
 print('start')
 
-# Right and Left lane line
-Left = Line()
-Right = Line()
-
-first_frame_flag = True
 
 image = cv2.imread('test_images/warp_img_with_lines.jpg')  #straight_lines1  test5
 image = cv2.imread('test_images/test5.jpg') #straight_lines1  test5
-#image = cv2.imread('test_images/warp_curved_lines.png') #straight_lines1  test5
+image = cv2.imread('test_images/straight_lines1.jpg') #straight_lines1  test5
 
-img_size = image.shape[1::-1]
-size_x = img_size[0]
-size_y = img_size[1]
 
 # Convert to RGB
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-
-
-# ---------------- Params for Camera_Calibration Module ---------------
-nx = 9  # the number of inside corners in x
-ny = 6  # the number of inside corners in y
 
 
 new_params = False  # Perform new calibration or use saved parameters
 if new_params == True:
-    mtx, dist = calibration_params(nx, ny, img_size)
+    mtx, dist = calibration_params()
 else:
     # Loading calibration params:
     with open('calibration_params.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
@@ -48,56 +35,24 @@ else:
 
 
 
-# Define Source and Destination points
-x1_offset = 180
-x2_offset = 590-2     #570
-x3_offset = (x2_offset - x1_offset)/3
-y1_offset = 30
-y2_offset = size_y-270   # 250
-# Source points
-P1_src = (x1_offset, size_y-y1_offset)
-P2_src = (x2_offset, y2_offset)
-P3_src = (size_x-x2_offset, y2_offset)
-P4_src = (size_x-x1_offset, size_y-y1_offset)
-# Destination points
-P1_dst = (P1_src[0] + x3_offset, size_y)
-P2_dst = (P1_dst[0], 0) # y_offset)
-P3_dst = (P4_src[0]-x3_offset, 0) #y_offset)
-P4_dst = (P3_dst[0], size_y)
-
-src = np.float32([P1_src, P2_src, P3_src, P4_src])
-dst = np.float32([P1_dst, P2_dst, P3_dst, P4_dst])
-
-# LONG
-# Define Source and Destination points
-x1_offset = 150
-x2_offset = 590     #570
-x3_offset = (x2_offset - x1_offset)/3
-y_offset = size_y-270   # 250
-# Source points
-P1_src = (x1_offset, size_y)
-P2_src = (x2_offset, y_offset)
-P3_src = (size_x-x2_offset, y_offset)
-P4_src = (size_x-x1_offset, size_y)
-# Destination points
-P1_dst = (P1_src[0] + x3_offset, size_y)
-P2_dst = (P1_dst[0], 0) # y_offset)
-P3_dst = (P4_src[0]-x3_offset, 0) #y_offset)
-P4_dst = (P3_dst[0], size_y)
 
 
+# Draw source and destination lines in images
+##"""
+vertices_src = np.array([[P1_src, P2_src, P3_src, P4_src]], dtype=np.int32)
+vertices_dst = np.array([[P1_dst, P2_dst, P3_dst, P4_dst]], dtype=np.int32)
+#img_src = np.copy(test_image)
+#img_dst = np.copy(test_image)
+cv2.polylines(test_image, vertices_src, False, (0,255,0), 1)
+cv2.polylines(test_image, vertices_dst, False, (255,0,0), 3)
+plt.imshow(test_image)
+plt.show()
+##"""
 
-src = np.float32([P1_src, P2_src, P3_src, P4_src])
-dst = np.float32([P1_dst, P2_dst, P3_dst, P4_dst])
-# ---------------- Params for line_detection Module ---------------
+#exit()
+#print("Type vert {}, \ntype src = {}".format(vertices_src, src))
 
 
-r_thresh = ([220, 255])
-s_thresh = ([120, 255])
-thresh_gradient = (20, 255)
-
-gauss_kernel = 15
-sobel_kernel=3
 
 
 
@@ -107,37 +62,89 @@ sobel_kernel=3
 #----------------------------------------------------------------------
 
 
-colour_bin = colour_extraction(image,  r_thresh =  r_thresh, s_thresh = s_thresh)
-gradient_bin = gradient_extraction(image, gauss_kernel = gauss_kernel, sobel_kernel=sobel_kernel, orient = 'x', thresh = thresh_gradient)
+Left.detected = True
+Right.detected = True
+
+def pipeline(image):
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    undist_img = undistort(image, mtx, dist)
+    image = np.copy(undist_img)
+    colour_bin = colour_extraction(image, r_thresh=r_thresh, s_thresh=s_thresh)
+    gradient_bin = gradient_extraction(image, gauss_kernel=gauss_kernel, sobel_kernel=sobel_kernel,
+                                       orient='x', thresh=thresh_gradient)
+
+    combined_binaries = cv2.bitwise_or(colour_bin, gradient_bin)
+
+    morphed = cv2.morphologyEx(combined_binaries, cv2.MORPH_OPEN, kernel=morph_kernel)
+    warped_img = warp(morphed, src, dst)
+
+    #sanity_check()
+
+    if ((Left.detected == True) and (Right.detected == True)):
+        find_first_frame(warped_img)
+        # Saving params:
+        # with open('found_lines.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
+        #   pickle.dump([left_fit, right_fit], f)
+        print("first_")
+    else:
+        # Loading calibration params:
+        with open('found_lines.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
+            left_fit, right_fit = pickle.load(f)
+        find_lines(warped_img, left_fit, right_fit)
+        print("second_")
+
+    get_dist_radius()
+    output_image = draw_lines(warped_img, undist_img)
+
+    return output_image
+
+
+#----------------------------------------------------------------------
+#---------------------------- RUN --------------------------------
+#----------------------------------------------------------------------
+from moviepy.editor import VideoFileClip
+video_output = 'output_images/test.mp4'
+
+
+clip1 = VideoFileClip("project_video.mp4").subclip(0,3)
+result = clip1.fl_image(pipeline)
+result.write_videofile(video_output, audio=False)
+
+
+"""
+for image in clip1.iter_frames():
+    #img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+    #result = pipeline(image)
+    result = clip1.fl_image(pipeline)
+    video_output.write_videofile(video_output_output, audio=False)
+
+white_output = 'test_videos_output/solidWhiteRight.mp4'
+## To speed up the testing process you may want to try your pipeline on a shorter subclip of the video
+## To do so add .subclip(start_second,end_second) to the end of the line below
+## Where start_second and end_second are integer values representing the start and end of the subclip
+## You may also uncomment the following line for a subclip of the first 5 seconds
+##clip1 = VideoFileClip("test_videos/solidWhiteRight.mp4").subclip(0,5)
+clip1 = VideoFileClip("test_videos/solidWhiteRight.mp4").subclip(3,5)
+white_clip = clip1.fl_image(pipeline) #NOTE: this function expects color images!!
+
+%time white_clip.write_videofile(white_output, audio=False)
+
+
 
 #plt.imshow(gradient_bin, cmap='gray')
 #plt.show()
 
-combined_binaries = cv2.bitwise_or(colour_bin, gradient_bin)
-
-morph_kernel = np.ones((2, 2), np.uint8)
-morphed = cv2.morphologyEx(combined_binaries, cv2.MORPH_OPEN, kernel = morph_kernel)
 
 
-
-undist_img = undistort(morphed, mtx, dist)
-warped_img = warp(undist_img, src, dst, img_size)
-
-if ((Left.detected == True) and (Right.detected == True)):
-    left_fit, right_fit = find_first_frame(warped_img)
-    # Saving params:
-    with open('found_lines.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
-        pickle.dump([left_fit, right_fit], f)
-    first_frame_flag = False
-else:
-    # Loading calibration params:
-    with open('found_lines.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
-        left_fit, right_fit = pickle.load(f)
-    find_lines(warped_img, left_fit, right_fit)
+#undist_img = undistort(morphed, mtx, dist)
 
 
 
+"""
 
+
+
+"""
 # Plot results line extraction
 f, ((ax1, ax2, ax3), (bx1, bx2, bx3)) = plt.subplots(2, 3, figsize=(20, 8))
 f.tight_layout()
@@ -158,6 +165,7 @@ bx3.set_title('Warped', fontsize=20)
 plt.subplots_adjust(left=0., right=1, top=0.9, bottom=0.)
 plt.show()
 
+"""
 
 
 #________________________________________________________________________
