@@ -4,13 +4,21 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import pickle
 from line_detection import colour_extraction, gradient_extraction
-from camera_calibration import undistort, warp
-from sliding_window import sliding_windows
+from camera_calibration import undistort, warp, calibration_params
+from sliding_window import find_first_frame, find_lines
+from Line_class import Line
+
 
 #----------------------------------------------------------------------
 #---------------------------- PARAMETERS ------------------------------
 #----------------------------------------------------------------------
 print('start')
+
+# Right and Left lane line
+Left = Line()
+Right = Line()
+
+first_frame_flag = True
 
 image = cv2.imread('test_images/warp_img_with_lines.jpg')  #straight_lines1  test5
 image = cv2.imread('test_images/test5.jpg') #straight_lines1  test5
@@ -32,7 +40,7 @@ ny = 6  # the number of inside corners in y
 
 new_params = False  # Perform new calibration or use saved parameters
 if new_params == True:
-    mtx, dist = calibration_params(nx, ny)
+    mtx, dist = calibration_params(nx, ny, img_size)
 else:
     # Loading calibration params:
     with open('calibration_params.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
@@ -60,7 +68,27 @@ P4_dst = (P3_dst[0], size_y)
 src = np.float32([P1_src, P2_src, P3_src, P4_src])
 dst = np.float32([P1_dst, P2_dst, P3_dst, P4_dst])
 
+# LONG
+# Define Source and Destination points
+x1_offset = 150
+x2_offset = 590     #570
+x3_offset = (x2_offset - x1_offset)/3
+y_offset = size_y-270   # 250
+# Source points
+P1_src = (x1_offset, size_y)
+P2_src = (x2_offset, y_offset)
+P3_src = (size_x-x2_offset, y_offset)
+P4_src = (size_x-x1_offset, size_y)
+# Destination points
+P1_dst = (P1_src[0] + x3_offset, size_y)
+P2_dst = (P1_dst[0], 0) # y_offset)
+P3_dst = (P4_src[0]-x3_offset, 0) #y_offset)
+P4_dst = (P3_dst[0], size_y)
 
+
+
+src = np.float32([P1_src, P2_src, P3_src, P4_src])
+dst = np.float32([P1_dst, P2_dst, P3_dst, P4_dst])
 # ---------------- Params for line_detection Module ---------------
 
 
@@ -95,7 +123,19 @@ morphed = cv2.morphologyEx(combined_binaries, cv2.MORPH_OPEN, kernel = morph_ker
 undist_img = undistort(morphed, mtx, dist)
 warped_img = warp(undist_img, src, dst, img_size)
 
-sliding_windows(warped_img)
+if ((Left.detected == True) and (Right.detected == True)):
+    left_fit, right_fit = find_first_frame(warped_img)
+    # Saving params:
+    with open('found_lines.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
+        pickle.dump([left_fit, right_fit], f)
+    first_frame_flag = False
+else:
+    # Loading calibration params:
+    with open('found_lines.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
+        left_fit, right_fit = pickle.load(f)
+    find_lines(warped_img, left_fit, right_fit)
+
+
 
 
 # Plot results line extraction

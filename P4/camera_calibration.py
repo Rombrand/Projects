@@ -73,7 +73,7 @@ cv2.polylines(img_dst, vertices_dst, False, (0,255,0), 3)
 
 
 #-------------------------- CALIBRATION ------------------------
-def calibration_params(nx, ny):
+def calibration_params(nx, ny, img_size):
 
     obj_points = []  # Real world points
     img_points = []  # Image points
@@ -139,7 +139,8 @@ def warp(undist, src, dst, img_size):
         M = cv2.getPerspectiveTransform(src, dst)
         # warp the image to a top-down view
         warped = cv2.warpPerspective(undist, M, img_size, flags=cv2.INTER_LINEAR)
-        #cv2.polylines(warped, vertices_dst, False, (0, 255, 0), 3)
+        #vertices_src = np.array([[P1_src, P2_src, P3_src, P4_src]], dtype=np.int32)
+        #cv2.polylines(warped, src, False, (0, 255, 0), 2)
         return warped
 
 
