@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/P4.iml" filepath="$PROJECT_DIR$/.idea/P4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../P5/.idea/P5.iml" filepath="$PROJECT_DIR$/../P5/.idea/P5.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/.idea/Spielwiese.iml" filepath="$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/.idea/Spielwiese.iml" />
     </modules>
   </component>

@@ -5,8 +5,10 @@ import matplotlib.image as mpimg
 import pickle
 from line_detection import colour_extraction, gradient_extraction
 from camera_calibration import undistort, warp, calibration_params
-from sliding_window import find_first_frame, find_lines, get_dist_radius, draw_lines
+from measure_curvature import find_first_frame, find_lines, get_dist_radius, draw_lines
 from params import *
+from moviepy.editor import VideoFileClip
+
 
 
 #----------------------------------------------------------------------
@@ -15,9 +17,9 @@ from params import *
 print('start')
 
 
-image = cv2.imread('test_images/warp_img_with_lines.jpg')  #straight_lines1  test5
-image = cv2.imread('test_images/test5.jpg') #straight_lines1  test5
-image = cv2.imread('test_images/straight_lines1.jpg') #straight_lines1  test5
+image = cv2.imread('test_images/prob1.png')  #straight_lines1  test5
+#image = cv2.imread('test_images/test5.jpg') #straight_lines1  test5
+#image = cv2.imread('test_images/straight_lines1.jpg') #straight_lines1  test5
 
 
 # Convert to RGB
@@ -38,7 +40,7 @@ else:
 
 
 # Draw source and destination lines in images
-##"""
+"""
 vertices_src = np.array([[P1_src, P2_src, P3_src, P4_src]], dtype=np.int32)
 vertices_dst = np.array([[P1_dst, P2_dst, P3_dst, P4_dst]], dtype=np.int32)
 #img_src = np.copy(test_image)
@@ -47,7 +49,7 @@ cv2.polylines(test_image, vertices_src, False, (0,255,0), 1)
 cv2.polylines(test_image, vertices_dst, False, (255,0,0), 3)
 plt.imshow(test_image)
 plt.show()
-##"""
+"""
 
 #exit()
 #print("Type vert {}, \ntype src = {}".format(vertices_src, src))
@@ -62,11 +64,14 @@ plt.show()
 #----------------------------------------------------------------------
 
 
-Left.detected = True
-Right.detected = True
+
 
 def pipeline(image):
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    #plt.imshow(image)
+    #plt.show()
+    #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    #plt.imshow(image)
+    #plt.show()
     undist_img = undistort(image, mtx, dist)
     image = np.copy(undist_img)
     colour_bin = colour_extraction(image, r_thresh=r_thresh, s_thresh=s_thresh)
@@ -80,7 +85,7 @@ def pipeline(image):
 
     #sanity_check()
 
-    if ((Left.detected == True) and (Right.detected == True)):
+    if ((Left.detected == False) and (Right.detected == False)):
         find_first_frame(warped_img)
         # Saving params:
         # with open('found_lines.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
@@ -88,9 +93,9 @@ def pipeline(image):
         print("first_")
     else:
         # Loading calibration params:
-        with open('found_lines.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
-            left_fit, right_fit = pickle.load(f)
-        find_lines(warped_img, left_fit, right_fit)
+        # with open('found_lines.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
+          #   left_fit, right_fit = pickle.load(f)
+        find_lines(warped_img)
         print("second_")
 
     get_dist_radius()
@@ -102,21 +107,18 @@ def pipeline(image):
 #----------------------------------------------------------------------
 #---------------------------- RUN --------------------------------
 #----------------------------------------------------------------------
-from moviepy.editor import VideoFileClip
+#pipeline(image)
+#exit()
+
 video_output = 'output_images/test.mp4'
 
-
-clip1 = VideoFileClip("project_video.mp4").subclip(0,3)
+clip1 = VideoFileClip("project_video.mp4")#.subclip(19,27)
 result = clip1.fl_image(pipeline)
 result.write_videofile(video_output, audio=False)
 
 
 """
-for image in clip1.iter_frames():
-    #img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
-    #result = pipeline(image)
-    result = clip1.fl_image(pipeline)
-    video_output.write_videofile(video_output_output, audio=False)
+
 
 white_output = 'test_videos_output/solidWhiteRight.mp4'
 ## To speed up the testing process you may want to try your pipeline on a shorter subclip of the video

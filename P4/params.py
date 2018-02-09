@@ -2,6 +2,8 @@
 import numpy as np
 import cv2
 import pickle
+import collections
+
 
 
 # Define a class to receive the characteristics of each line detection
@@ -25,8 +27,8 @@ class Line():
       # #radius of curvature of the line in some units
         self.radius_of_curvature = None
 
-        #distance in meters of vehicle center from the line
-        self.line_base_pos = None
+      # #distance in meters of vehicle center from the line
+        self.line_base_pos = 0
 
         #difference in fit coefficients between last and new fits
         self.diffs = np.array([0,0,0], dtype='float')
@@ -92,5 +94,23 @@ morph_kernel = np.ones((2, 2), np.uint8)
 ploty = [np.array([False])]
 left_fitx = []
 right_fitx = []
-
+car_pos = 0
 show = False
+
+# Define conversions in x and y from pixels space to meters
+ym_per_pix = 30 / 720  # meters per pixel in y dimension
+lane_dist = 640
+xm_per_pix = 3.7 / lane_dist  # meters per pixel in x dimension
+line_deviation_tollerance = 50  # (approx. 0,3m)
+
+n = 5
+coeffs_left = collections.deque(maxlen=n)
+coeffs_right = collections.deque(maxlen=n)
+#weights = (np.arange(1,n+1)*0.1) / sum(np.arange(1,n+1)*0.1) # weights for weighted average of the coefficients
+
+left_fitx  = collections.deque(maxlen=2)
+right_fitx  = collections.deque(maxlen=2)
+
+error_counter = 0   # if error counter reaches the threshold value delete all saved coefficients
+
+radiuses  = collections.deque(maxlen=2*n)
