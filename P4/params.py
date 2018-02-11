@@ -95,7 +95,7 @@ ploty = [np.array([False])]
 left_fitx = []
 right_fitx = []
 car_pos = 0
-show = False
+show = True
 
 # Define conversions in x and y from pixels space to meters
 ym_per_pix = 30 / 720  # meters per pixel in y dimension

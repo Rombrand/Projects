@@ -10,7 +10,110 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="P5.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../P5/P5.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="153" column="32" lean-forward="false" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parameters.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../P5/parameters.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helpers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../P5/helpers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="194" column="34" lean-forward="true" selection-start-line="194" selection-start-column="34" selection-end-line="194" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/sklearn/preprocessing/data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="691" column="0" lean-forward="false" selection-start-line="691" selection-start-column="0" selection-end-line="691" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pyplot.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/matplotlib/pyplot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="3079" column="0" lean-forward="false" selection-start-line="3079" selection-start-column="0" selection-end-line="3079" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Spielwiese2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="173" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_classify.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../P5/search_classify.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-428">
+              <caret line="70" column="11" lean-forward="false" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Spielwiese.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="explore_color_spaces.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../P5/explore_color_spaces.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-191">
+              <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -21,7 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>collectCalibrati</find>
       <find>polylines</find>
       <find>with</find>
       <find>right_fit</find>
@@ -40,6 +142,18 @@
       <find>aver</find>
       <find>radius_of_curvature</find>
       <find>car_pos</find>
+      <find>transform_sqrt</find>
+      <find>vsplit</find>
+      <find>extract_features</find>
+      <find>'L'</find>
+      <find>Feature vector length:</find>
+      <find>rand</find>
+      <find>file</find>
+      <find>hog</find>
+      <find>get_hog_features</find>
+      <find>color_hist</find>
+      <find>255</find>
+      <find>COLOR_BGR</find>
     </findStrings>
     <replaceStrings>
       <replace>Left.ally</replace>
@@ -58,17 +172,21 @@
       <list>
         <option value="$PROJECT_DIR$/CarND-Advanced-Lane-Lines/camera_calibration.py" />
         <option value="$PROJECT_DIR$/Line_class.py" />
-        <option value="$PROJECT_DIR$/camera_calibration.py" />
         <option value="$PROJECT_DIR$/sliding_window.py" />
-        <option value="$PROJECT_DIR$/../P5/helpers.py" />
-        <option value="$PROJECT_DIR$/../P5/search_classify.py" />
         <option value="$PROJECT_DIR$/../P5/solution.py" />
         <option value="$PROJECT_DIR$/line_calculations.py" />
-        <option value="$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese.py" />
         <option value="$PROJECT_DIR$/line_detection.py" />
-        <option value="$PROJECT_DIR$/params.py" />
         <option value="$PROJECT_DIR$/measure_curvature.py" />
         <option value="$PROJECT_DIR$/P4.py" />
+        <option value="$PROJECT_DIR$/../P5/search_classify.py" />
+        <option value="$PROJECT_DIR$/../P5/explore_color_spaces.py" />
+        <option value="$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese.py" />
+        <option value="$PROJECT_DIR$/params.py" />
+        <option value="$PROJECT_DIR$/camera_calibration.py" />
+        <option value="$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese2.py" />
+        <option value="$PROJECT_DIR$/../P5/helpers.py" />
+        <option value="$PROJECT_DIR$/../P5/parameters.py" />
+        <option value="$PROJECT_DIR$/../P5/P5.py" />
       </list>
     </option>
   </component>
@@ -135,7 +253,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.P4">
+  <component name="RunManager" selected="Python.P5">
     <configuration name="P4" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -149,6 +267,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="P4" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/P4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="P5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../P5" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="P5" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../P5/P5.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -172,25 +308,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="camera_calibration" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Spielwiese2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CarND-Advanced-Lane-Lines" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="P4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CarND-Advanced-Lane-Lines/camera_calibration.py" />
+      <module name="Spielwiese" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="line_detection" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="camera_calibration" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -202,13 +338,13 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="P4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/line_detection.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/camera_calibration.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="search_classify" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="explore_color_spaces" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -220,25 +356,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="P5" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../P5/search_classify.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="sliding_window" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="P4" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/measure_curvature.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../P5/explore_color_spaces.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -247,18 +365,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.P4" />
       <item index="1" class="java.lang.String" itemvalue="Python.Spielwiese" />
-      <item index="2" class="java.lang.String" itemvalue="Python.camera_calibration" />
-      <item index="3" class="java.lang.String" itemvalue="Python.line_detection" />
-      <item index="4" class="java.lang.String" itemvalue="Python.sliding_window" />
-      <item index="5" class="java.lang.String" itemvalue="Python.search_classify" />
+      <item index="2" class="java.lang.String" itemvalue="Python.explore_color_spaces" />
+      <item index="3" class="java.lang.String" itemvalue="Python.camera_calibration" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Spielwiese2" />
+      <item index="5" class="java.lang.String" itemvalue="Python.P5" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Spielwiese" />
-        <item index="1" class="java.lang.String" itemvalue="Python.search_classify" />
-        <item index="2" class="java.lang.String" itemvalue="Python.sliding_window" />
-        <item index="3" class="java.lang.String" itemvalue="Python.line_detection" />
-        <item index="4" class="java.lang.String" itemvalue="Python.camera_calibration" />
+        <item index="0" class="java.lang.String" itemvalue="Python.P5" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Spielwiese2" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Spielwiese" />
+        <item index="3" class="java.lang.String" itemvalue="Python.camera_calibration" />
+        <item index="4" class="java.lang.String" itemvalue="Python.explore_color_spaces" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +396,7 @@
     </task>
     <servers />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -289,12 +407,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17124736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17124736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31076178" sideWeight="0.5024665" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31197098" sideWeight="0.49753347" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32769045" sideWeight="0.49753347" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -318,7 +437,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="2" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -328,7 +447,7 @@
         <state relative-caret-position="1305">
           <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -338,7 +457,7 @@
         <state relative-caret-position="3705">
           <caret line="252" column="41" lean-forward="true" selection-start-line="252" selection-start-column="41" selection-end-line="252" selection-end-column="41" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -348,7 +467,7 @@
         <state relative-caret-position="1485">
           <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding>
-            <element signature="e#1#19#0" expanded="true" />
+            <element signature="e#1#19#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -358,7 +477,7 @@
         <state relative-caret-position="15">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -368,7 +487,7 @@
         <state relative-caret-position="660">
           <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -378,7 +497,7 @@
         <state relative-caret-position="720">
           <caret line="54" column="44" lean-forward="false" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -398,7 +517,7 @@
         <state relative-caret-position="480">
           <caret line="32" column="20" lean-forward="false" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -408,7 +527,7 @@
         <state relative-caret-position="90">
           <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="21" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -418,7 +537,7 @@
         <state relative-caret-position="315">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -428,7 +547,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -440,14 +559,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CarND-Advanced-Lane-Lines/camera_calibration.py" />
-    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="3079" column="0" lean-forward="false" selection-start-line="3079" selection-start-column="0" selection-end-line="3079" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/numpy/lib/polynomial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -471,26 +582,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/sklearn/utils/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1568">
-          <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/PIL/Image.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
           <caret line="2529" column="0" lean-forward="false" selection-start-line="2529" selection-start-column="0" selection-end-line="2529" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/matplotlib/image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="1279" column="0" lean-forward="false" selection-start-line="1279" selection-start-column="0" selection-end-line="1279" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -503,32 +598,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../P5/search_classify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="176" column="38" lean-forward="true" selection-start-line="176" selection-start-column="38" selection-end-line="176" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#32#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../P5/helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2368">
-          <caret line="158" column="0" lean-forward="true" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/measure_curvature.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="250" column="7" lean-forward="false" selection-start-line="250" selection-start-column="7" selection-end-line="250" selection-end-column="7" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -557,63 +632,185 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/measure_curvature.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-439">
           <caret line="279" column="51" lean-forward="false" selection-start-line="279" selection-start-column="51" selection-end-line="279" selection-end-column="51" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/matplotlib/cm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="160" column="0" lean-forward="false" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/matplotlib/image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="756" column="0" lean-forward="false" selection-start-line="756" selection-start-column="0" selection-end-line="756" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/params.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="97" column="11" lean-forward="false" selection-start-line="97" selection-start-column="11" selection-end-line="97" selection-end-column="11" />
+          <folding>
+            <element signature="e#1#19#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/P4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="110" column="7" lean-forward="false" selection-start-line="110" selection-start-column="7" selection-end-line="110" selection-end-column="7" />
+        <state relative-caret-position="408">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/params.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="108" column="1" lean-forward="false" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="1" />
-          <folding>
-            <element signature="e#1#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/line_detection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/camera_calibration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="151" column="21" lean-forward="false" selection-start-line="151" selection-start-column="11" selection-end-line="151" selection-end-column="21" />
+        <state relative-caret-position="142">
+          <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/line_detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="92" column="17" lean-forward="true" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/sklearn/cross_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/numpy/core/shape_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="236" column="38" lean-forward="false" selection-start-line="236" selection-start-column="28" selection-end-line="236" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/skimage/feature/_hog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/sklearn/utils/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4353">
+          <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../P5/explore_color_spaces.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-191">
+          <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../P5/search_classify.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-428">
+          <caret line="70" column="11" lean-forward="false" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../_Udacity_SDC/Python/Spielwiese/Spielwiese2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="173" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="3079" column="0" lean-forward="false" selection-start-line="3079" selection-start-column="0" selection-end-line="3079" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/carnd-term1/lib/python3.5/site-packages/sklearn/preprocessing/data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="691" column="0" lean-forward="false" selection-start-line="691" selection-start-column="0" selection-end-line="691" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../P5/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="194" column="34" lean-forward="true" selection-start-line="194" selection-start-column="34" selection-end-line="194" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../P5/P5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="153" column="32" lean-forward="false" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../P5/parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

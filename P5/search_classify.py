@@ -60,7 +60,7 @@ def single_img_features(img, color_space='RGB', spatial_size=(32, 32),
 
     # 9) Return concatenated array of features
     return np.concatenate(img_features)
-
+#----------------------------------------------------------------------------------------------------------------------
 
 # Define a function you will pass an image
 # and the list of windows to be searched (output of slide_windows())
@@ -93,7 +93,9 @@ def search_windows(img, windows, clf, scaler, color_space='RGB',
     # 8) Return windows for positive detections
     return on_windows
 
-
+#----------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------
 # Read in cars and notcars
 images = glob.glob('../../Project_Data/P5_data/small/**/*.jpeg', recursive=True)
 cars = []

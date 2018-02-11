@@ -7,7 +7,7 @@ import glob
 from params import *
 
 #image = cv2.imread('test_images/warp_img_with_lines.jpg') #straight_lines1  test5
-#test_image = cv2.imread('test_images/test5.jpg') #straight_lines1  test5
+test_image = cv2.imread('test_images/test5.jpg') #straight_lines1  test5
 #test_image = cv2.imread('test_images/straight_lines1.jpg') #straight_lines1  test5
 
 
@@ -136,8 +136,17 @@ def warp(undist, src, dst):
         return warped
 
 
-"""
 
+
+"""
+# TEST PIPELINE
+new_params = False  # Perform new calibration or use saved parameters
+if new_params == True:
+    mtx, dist = calibration_params()
+else:
+    # Loading calibration params:
+    with open('calibration_params.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
+        mtx, dist = pickle.load(f)
 
 undist_img = undistort(test_image, mtx, dist)
 
@@ -147,7 +156,7 @@ warp_img = warp(undist_img, src, dst)
 
 
 # plot images
-f, ((ax1, ax2, ax3), (ax4, ax5, ax6)) = plt.subplots(2, 3, figsize=(24, 9))
+f, ((ax1, ax2, ax3)) = plt.subplots(1, 3, figsize=(24, 9))
 f.tight_layout()
 ax1.imshow(test_image)
 ax1.set_title('Original Image', fontsize=20)
@@ -155,70 +164,10 @@ ax2.imshow(undist_img)
 ax2.set_title('Undistorted Image', fontsize=20)
 ax3.imshow(warp_img)
 ax3.set_title('Warped Image', fontsize=20)
-ax4.imshow(img_src)
-ax4.set_title('Source Points', fontsize=20)
-ax5.imshow(img_dst)
-ax5.set_title('Destination Points', fontsize=20)
+
 
 
 plt.show()
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-# Read in the saved camera matrix and distortion coefficients
-# These are the arrays you calculated using cv2.calibrateCamera()
-
-
-# Read in an image
-img = cv2.imread('test_image2.png')
-
-
-""
-
-# MODIFY THIS FUNCTION TO GENERATE OUTPUT
-# THAT LOOKS LIKE THE IMAGE ABOVE
-def corners_unwarp(img, nx, ny, mtx, dist):
-    # Pass in your image into this function
-    # Write code to do the following steps
-    # 1) Undistort using mtx and dist
-    undist = cv2.undistort(img, mtx, dist, None, mtx)
-    # 2) Convert to grayscale
-    gray = cv2.cvtColor(undist, cv2.COLOR_BGR2GRAY)
-    img_size = gray.shape[::-1]
-    size_x, size_y = img_size
-    # 3) Find the chessboard corners
-    ret, corners = cv2.findChessboardCorners(gray, (nx, ny), None)
-    for i, corner in enumerate(corners):
-        print("corner {}: {}".format(i, corner))
-    # 4) If corners found:
-    if ret == True:
-        # a) draw corners
-        cv2.drawChessboardCorners(undist, (nx, ny), corners, ret)
-        # plt.imshow(img)
-
-        src = np.float32([corners[0], corners[nx-1], corners[-nx], corners[-1]])
-        print("SRC: ", src)
-        # arbitrary destination points
-        xy_offset = 80  # choosen distance in x and y direction
-        dst = np.float32([[xy_offset, xy_offset], [size_x - xy_offset, xy_offset], [xy_offset, size_y - xy_offset], [size_x - xy_offset, xy_offset]])
-        # get M, the transform matrix
-        M = cv2.getPerspectiveTransform(src, dst)
-        # warp the image to a top-down view
-        print("Image size = ", img_size)
-        warped = cv2.warpPerspective(undist, M, img_size, flags=cv2.INTER_LINEAR)
-
-    return warped, M
 
 """
