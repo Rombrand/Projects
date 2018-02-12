@@ -307,9 +307,6 @@ def sanity_check():
     global ploty, error_counter
     error_flag = False
 
-    print("\n--------------------------- START ------------------------------")
-
-
     if len(left_fitx[-1]) > 0:
         distance = (np.asarray(right_fitx) - np.asarray(left_fitx[-1]))
         distance_bottom = (right_fitx[-1][size_y-1] - left_fitx[-1][size_y-1])
@@ -374,7 +371,6 @@ def sanity_check():
             Left.detected = False
             Right.detected = False
 
-        print("\n--------------------------- STOP ------------------------------")
 
         Left.current_fit = coeffs_left[-1]
         Left.current_fit = coeffs_left[-1]

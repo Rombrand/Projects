@@ -6,12 +6,13 @@ import glob
 import time
 from sklearn.svm import LinearSVC
 from sklearn.preprocessing import StandardScaler
-from skimage.feature import hog
+#from skimage.feature import hog
 from sklearn.model_selection import train_test_split
 #import pickle
 from sklearn.externals import joblib
 from helpers import *
 from parameters import *
+from moviepy.editor import VideoFileClip
 
 
 #--------------------------------------------- TRAINING SEQUENCE -------------------------------------------------------
@@ -80,6 +81,8 @@ if train == True:
     print("# of notcar features: ", len(notcar_feature_list))
 
 # --------------------------------------------- Stack Features ---------------------------------------------------------
+    print("Stacking and spliting data...")
+
     # Create an array stack of feature vectors
     X = np.vstack((car_feature_list, notcar_feature_list)).astype(np.float64)
 
@@ -136,8 +139,8 @@ if train == True:
     print(round(t2 - t, 2), 'Seconds to train the classifier on {} pictures'.format(len(y)))
 else:
     # load classifier
-    svc = joblib.load('svc_classifier.pkl')
-    X_scaler = joblib.load('X_scaler.pkl')
+    svc = joblib.load('svc_classifier_32bins_16pix_9orient.pkl') #_32bins_16pix_9orient _64bins_8pix_12orient _32bins_8pix_12orient
+    X_scaler = joblib.load('X_scaler_32bins_16pix_9orient.pkl')
 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -151,36 +154,71 @@ image = cv2.imread('../CarND-Vehicle-Detection/test_images/test1.jpg')
 
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-print("Scale: ", np.amax(image))
-
-
-"""
-
-image_fatures = extract_features(image, color_space='RGB', spatial_size=(32, 32),
-                     hist_bins=32, orient=9,
-                     pix_per_cell=8, cell_per_block=2, hog_channel=0,
-                     spatial_feat=hist_feat, hist_feat=hist_feat, hog_feat=hog_feat, block_norm=block_norm)
-"""
-#print('Feature vector length:', len(image_fatures))
-
-
-# Fit a per-column scaler
-# Apply the scaler to X
-#scaled_feature = X_scaler.transform(np.array(image_fatures).reshape(1, -1))
-
-
-
-#print('My SVC predicts: ', svc.predict(scaled_feature))
 
 
 
 
 
-out_img = find_cars(image, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins)
-
-plt.imshow(out_img)
+b = find_cars(image, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins, color_space, show)
+img = draw_boxes(image, b)
+plt.imshow(img)
 plt.show()
 
+#"""
+
+def pipeline(image):
+    global box_sequence, heat
+    #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    # out_img = find_cars(image, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block, spatial_size, hist_bins)
+
+    box_list = find_cars_scaled(image, ystart, ystop, scale, svc, X_scaler, orient, pix_per_cell, cell_per_block,
+                                spatial_size, hist_bins, color_space, show)
+    box_sequence += box_list
+
+    # Add heat to each box in box list
+    heat = add_heat(heat, box_sequence)
+
+    # Apply threshold to help remove false positives
+    heat = apply_threshold(heat, heat_threshold)
+
+    # Visualize the heatmap when displaying
+    heatmap = np.clip(heat, 0, 255)
+
+    # Find final boxes from heatmap using label function
+    labels = label(heatmap)
+    out_img = draw_labeled_bboxes(np.copy(image), labels)
+
+    return out_img
+
+video_output = '../CarND-Vehicle-Detection/output_images/test.mp4'
+
+clip1 = VideoFileClip("../CarND-Vehicle-Detection/project_video.mp4")#.subclip(7,10)
+result = clip1.fl_image(pipeline)
+result.write_videofile(video_output, audio=False)
+
+
+
+#"""
+
+
+
+
+
+
+
+"""
+
+fig = plt.figure(figsize=(25,10))
+plt.subplot(121)
+plt.imshow(draw_img)
+plt.title('Car Positions')
+plt.subplot(122)
+plt.imshow(heatmap, cmap='hot')
+plt.title('Heat Map')
+fig.tight_layout()
+plt.show()
+
+"""
 
 ######
 exit()

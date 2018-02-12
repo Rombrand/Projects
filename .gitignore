@@ -1,6 +1,6 @@
 *.DS_Store
 /P1
-/P2
+#/P2
 #/P3
 #/CarND-Alexnet-Feature-Extraction
 #/CarND-Term1-Starter-Kit-Test
